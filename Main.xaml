@@ -1,0 +1,117 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="882,1500" sap2010:WorkflowViewState.IdRef="Main2_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="20">
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="40">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Process Excel records for RPA Process Monitoring project." DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="552,1434" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_Input" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message Started" sap:VirtualizedContainerService.HintSize="510,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Process Started: Reading Excel...&quot;]" />
+    <ui:ReadRange AddHeaders="True" DataTable="[dt_Input]" DisplayName="Read Range Input File" sap:VirtualizedContainerService.HintSize="510,87" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Input_Records" WorkbookPath="Data\Input\EmployeeRecords.xlsx">
+      <ui:ReadRange.Range>
+        <InArgument x:TypeArguments="x:String">
+          <Literal x:TypeArguments="x:String" Value="" />
+        </InArgument>
+      </ui:ReadRange.Range>
+    </ui:ReadRange>
+    <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="ProcessingStatus" DataTable="[dt_Input]" DisplayName="Add ProcessingStatus" sap:VirtualizedContainerService.HintSize="510,185" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_1" />
+    <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="ProcessingMessage" DataTable="[dt_Input]" DisplayName="Add ProcessingMessage" sap:VirtualizedContainerService.HintSize="510,185" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_2" />
+    <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="ProcessingTimestamp" DataTable="[dt_Input]" DisplayName="Add ProcessingTimestamp" sap:VirtualizedContainerService.HintSize="510,185" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_3" />
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_Input]" DisplayName="For Each Row in dt_Input" sap:VirtualizedContainerService.HintSize="510,514" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+      <ui:ForEachRow.Body>
+        <ActivityAction x:TypeArguments="sd:DataRow">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="476,394" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:Boolean" Name="isValid" />
+              <Variable x:TypeArguments="x:String" Name="failReason" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:InvokeCode ContinueOnError="{x:Null}" Code="isValid = True&#xA;failReason = &quot;&quot;&#xA;If String.IsNullOrWhiteSpace(CurrentRow(&quot;EmployeeID&quot;).ToString) Then&#xA;    isValid = False&#xA;    failReason = &quot;Missing EmployeeID&quot;&#xA;ElseIf String.IsNullOrWhiteSpace(CurrentRow(&quot;EmployeeName&quot;).ToString) Then&#xA;    isValid = False&#xA;    failReason = &quot;Missing EmployeeName&quot;&#xA;ElseIf Not CurrentRow(&quot;EmploymentStatus&quot;).ToString.Equals(&quot;Active&quot;, StringComparison.OrdinalIgnoreCase) Then&#xA;    isValid = False&#xA;    failReason = &quot;Employee is inactive&quot;&#xA;Else&#xA;    Dim sal As Double&#xA;    If Double.TryParse(CurrentRow(&quot;Salary&quot;).ToString, sal) Then&#xA;        If sal &lt;= 0 Then&#xA;            isValid = False&#xA;            failReason = &quot;Salary must be greater than 0&quot;&#xA;        End If&#xA;    Else&#xA;        isValid = False&#xA;        failReason = &quot;Invalid salary format&quot;&#xA;    End If&#xA;End If&#xA;&#xA;If isValid Then&#xA;    CurrentRow(&quot;ProcessingStatus&quot;) = &quot;Success&quot;&#xA;    CurrentRow(&quot;ProcessingMessage&quot;) = &quot;Record processed successfully&quot;&#xA;Else&#xA;    CurrentRow(&quot;ProcessingStatus&quot;) = &quot;Failed&quot;&#xA;    CurrentRow(&quot;ProcessingMessage&quot;) = failReason&#xA;End If&#xA;CurrentRow(&quot;ProcessingTimestamp&quot;) = DateTime.Now.ToString(&quot;yyyy-MM-dd HH:mm:ss&quot;)" DisplayName="Validate Row Logic" sap:VirtualizedContainerService.HintSize="434,164" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+              <ui:InvokeCode.Arguments>
+                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentRow">[CurrentRow]</InOutArgument>
+                <OutArgument x:TypeArguments="x:Boolean" x:Key="isValid">[isValid]</OutArgument>
+                <OutArgument x:TypeArguments="x:String" x:Key="failReason">[failReason]</OutArgument>
+              </ui:InvokeCode.Arguments>
+            </ui:InvokeCode>
+            <If Condition="[isValid]" DisplayName="If Valid Log" sap:VirtualizedContainerService.HintSize="434,51" sap2010:WorkflowViewState.IdRef="If_1">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <ui:LogMessage DisplayName="Log Message Success" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Successfully processed EmployeeID: &quot; + CurrentRow(&quot;EmployeeID&quot;).ToString]" />
+              </If.Then>
+              <If.Else>
+                <ui:LogMessage DisplayName="Log Message Failure" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Warn" Message="[&quot;Validation failed for row. Reason: &quot; + failReason]" />
+              </If.Else>
+            </If>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEachRow.Body>
+    </ui:ForEachRow>
+    <ui:WriteRange AddHeaders="True" DataTable="[dt_Input]" DisplayName="Write Range Output" sap:VirtualizedContainerService.HintSize="510,115" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Input_Records" StartingCell="A1" WorkbookPath="Data\Output\ProcessedEmployeeRecords.xlsx" />
+    <ui:LogMessage DisplayName="Log Message Completed" sap:VirtualizedContainerService.HintSize="510,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Process Completed successfully!&quot;]" />
+  </Sequence>
+</Activity>
